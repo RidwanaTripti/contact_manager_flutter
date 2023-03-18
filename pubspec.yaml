@@ -39,6 +39,8 @@ dependencies:
   another_flushbar: ^1.12.29
   font_awesome_flutter: ^10.4.0
   pinput: ^2.2.31
+  http: ^0.13.5
+  iconify_flutter: ^0.0.5
 
 dev_dependencies:
   flutter_test:

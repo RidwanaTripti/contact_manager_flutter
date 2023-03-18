@@ -25,7 +25,7 @@ class _FirstScreenState extends State<FirstScreen> {
                     child: Column(
                       children: [
                         Image(
-                          image: AssetImage("assets/image_01.jpg"),
+                          image: AssetImage("assets/image/image_01.jpg"),
                         ),
                         SizedBox(height: 20),
                         Container(

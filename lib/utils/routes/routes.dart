@@ -1,4 +1,6 @@
 import '../../view/fisrt_screen.dart';
+import '../../view/form_screen.dart';
+import '../../view/search/mym.dart';
 import '../../view/signin_screen.dart';
 import '../../view/splash_screen.dart';
 import '/utils/routes/routes_name.dart';
@@ -17,7 +19,11 @@ class Routes {
         return MaterialPageRoute(builder: (context) => const SigninScreen());
       case RoutesName.home:
         return MaterialPageRoute(builder: (context) => const HomeScreen());
-
+      case RoutesName.form:
+        return MaterialPageRoute(builder: (context) => const FormFieldScreen());
+      case RoutesName.mym:
+        return MaterialPageRoute(
+            builder: (context) => const MymDivisionScreen());
       default:
         return MaterialPageRoute(builder: (_) {
           return const Scaffold(

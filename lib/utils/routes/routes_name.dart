@@ -8,4 +8,5 @@ class RoutesName {
   //Privet routes
   static const String home = 'home_screen';
   static const String otp = 'otp_screen';
+  static const String mym = 'mym_screen';
 }

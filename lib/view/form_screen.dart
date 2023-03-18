@@ -1,13 +1,14 @@
+import 'package:contact_manager/utils/routes/routes_name.dart';
 import 'package:flutter/material.dart';
 
-class FormField_Screen extends StatefulWidget {
-  const FormField_Screen({super.key});
+class FormFieldScreen extends StatefulWidget {
+  const FormFieldScreen({super.key});
 
   @override
-  State<FormField_Screen> createState() => _FormField_ScreenState();
+  State<FormFieldScreen> createState() => _FormFieldScreenState();
 }
 
-class _FormField_ScreenState extends State<FormField_Screen> {
+class _FormFieldScreenState extends State<FormFieldScreen> {
   ButtonStyle buttonStyle = ElevatedButton.styleFrom(
     shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
@@ -18,7 +19,9 @@ class _FormField_ScreenState extends State<FormField_Screen> {
     minimumSize: Size(200, 50),
     backgroundColor: Colors.blue,
   );
+
   TextStyle textStyle = TextStyle(color: Colors.black);
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -44,7 +47,7 @@ class _FormField_ScreenState extends State<FormField_Screen> {
                           "নাম",
                           style: textStyle,
                         ),
-                        TextField(
+                        TextFormField(
                           keyboardType: TextInputType.multiline,
                           decoration: InputDecoration(
                             hintStyle: TextStyle(color: Colors.black),
@@ -56,7 +59,7 @@ class _FormField_ScreenState extends State<FormField_Screen> {
                           "ই-মেইল(অপশনাল)",
                           style: textStyle,
                         ),
-                        TextField(
+                        TextFormField(
                           keyboardType: TextInputType.multiline,
                           decoration: InputDecoration(
                             hintStyle: TextStyle(color: Colors.black),
@@ -68,7 +71,7 @@ class _FormField_ScreenState extends State<FormField_Screen> {
                           "পাসওয়ার্ড",
                           style: textStyle,
                         ),
-                        TextField(
+                        TextFormField(
                           keyboardType: TextInputType.multiline,
                           decoration: InputDecoration(
                             hintStyle: TextStyle(color: Colors.black),
@@ -80,7 +83,7 @@ class _FormField_ScreenState extends State<FormField_Screen> {
                           "পাসওয়ার্ড নিশ্চিত করুন",
                           style: textStyle,
                         ),
-                        TextField(
+                        TextFormField(
                           keyboardType: TextInputType.multiline,
                           decoration: InputDecoration(
                             hintStyle: TextStyle(color: Colors.black),
@@ -93,10 +96,7 @@ class _FormField_ScreenState extends State<FormField_Screen> {
                   SizedBox(height: 30),
                   ElevatedButton(
                     onPressed: () {
-                      // Navigator.push(context,
-                      //     MaterialPageRoute(builder: (context) {
-                      //   return PhoneBook_Screen();
-                      // }));
+                      Navigator.pushNamed(context, RoutesName.home);
                     },
                     child: Text("নিবন্ধন করুন"),
                     style: buttonStyle,

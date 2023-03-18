@@ -61,7 +61,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Container(
                   child: Column(
                     children: [
-                      TextField(
+                      TextFormField(
                         // keyboardType: TextInputType.number,
                         decoration: InputDecoration(
                           hintText: "আপনার মোবাইল নাম্বার দিন",
@@ -73,7 +73,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       const SizedBox(height: 20),
                       Container(
-                        child: TextField(
+                        child: TextFormField(
                           keyboardType: TextInputType.multiline,
                           decoration: InputDecoration(
                             hintText: "আপনার পাসওয়ার্ড দিন",

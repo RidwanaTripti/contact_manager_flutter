@@ -1,3 +1,4 @@
+import 'package:contact_manager/utils/routes/routes_name.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 // import 'package:project_sample_01/screens/otp_screen.dart';
@@ -60,7 +61,7 @@ class _SigninScreenState extends State<SigninScreen> {
                 padding: const EdgeInsets.all(16.0),
                 child: Expanded(
                   child: Container(
-                    child: TextField(
+                    child: TextFormField(
                       // keyboardType: TextInputType.number,
                       decoration: InputDecoration(
                         hintText: "আপনার মোবাইল নাম্বার দিন",
@@ -78,10 +79,7 @@ class _SigninScreenState extends State<SigninScreen> {
                 padding: const EdgeInsets.all(40.0),
                 child: ElevatedButton(
                   onPressed: () {
-                    // Navigator.push(context,
-                    //     MaterialPageRoute(builder: (context) {
-                    //   return OTP_Screen();
-                    // }));
+                    Navigator.pushNamed(context, RoutesName.form);
                   },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
