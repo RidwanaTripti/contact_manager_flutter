@@ -1,4 +1,6 @@
+import 'package:another_flushbar/flushbar.dart';
 import 'package:contact_manager/utils/routes/routes_name.dart';
+import 'package:contact_manager/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 // import 'package:project_sample_01/screens/otp_screen.dart';
@@ -11,17 +13,6 @@ class SigninScreen extends StatefulWidget {
 }
 
 class _SigninScreenState extends State<SigninScreen> {
-  ButtonStyle buttonStyle = ElevatedButton.styleFrom(
-    shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(10),
-            topRight: Radius.circular(10),
-            bottomLeft: Radius.circular(10),
-            bottomRight: Radius.circular(10))),
-    minimumSize: Size(300, 50),
-    backgroundColor: Colors.blue,
-  );
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -77,25 +68,12 @@ class _SigninScreenState extends State<SigninScreen> {
               // SizedBox(height: 30),
               Padding(
                 padding: const EdgeInsets.all(40.0),
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, RoutesName.form);
-                  },
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "চালিয়ে যান ",
-                        style: TextStyle(fontSize: 15),
-                      ),
-                      Icon(
-                        FontAwesomeIcons.chevronRight,
-                        size: 12.0,
-                      )
-                    ],
-                  ),
-                  style: buttonStyle,
-                ),
+                child: Utils.customiconButton(
+                    "চালিয়ে যান ",
+                    FontAwesomeIcons.chevronRight,
+                    Colors.blue,
+                    BorderRadius.circular(10.0),
+                    () => Navigator.pushNamed(context, RoutesName.form)),
               ),
               // SizedBox(height: 300),
               Padding(

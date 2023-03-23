@@ -9,4 +9,6 @@ class RoutesName {
   static const String home = 'home_screen';
   static const String otp = 'otp_screen';
   static const String mym = 'mym_screen';
+  static const String drop = 'drop_screen';
+  static const String profile = 'profile_screen';
 }

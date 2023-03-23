@@ -1,5 +1,8 @@
+import 'package:contact_manager/utils/routes/routes_name.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
+
+import '../utils/utils.dart';
 // import '/screens/form_screen.dart';
 // import '/screens/login_screen.dart';
 
@@ -12,13 +15,13 @@ class OTP_Screen extends StatefulWidget {
 
 class _OTP_ScreenState extends State<OTP_Screen> {
   ButtonStyle buttonStyle = ElevatedButton.styleFrom(
-    shape: RoundedRectangleBorder(
+    shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
             topLeft: Radius.circular(10),
             topRight: Radius.circular(10),
             bottomLeft: Radius.circular(10),
             bottomRight: Radius.circular(10))),
-    minimumSize: Size(200, 50),
+    minimumSize: const Size(200, 50),
     backgroundColor: Colors.blue,
   );
   @override
@@ -33,7 +36,7 @@ class _OTP_ScreenState extends State<OTP_Screen> {
               //   return Login_Screen();
               // }));
             },
-            icon: Icon(Icons.arrow_back),
+            icon: const Icon(Icons.arrow_back),
             color: Colors.black,
           ),
           backgroundColor: Colors.transparent,
@@ -45,25 +48,25 @@ class _OTP_ScreenState extends State<OTP_Screen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Text(
+                const Text(
                   "ও.টি.পি নিশ্চিত করুন",
                   style: TextStyle(
                       fontSize: 20.0,
                       color: Colors.black,
                       fontWeight: FontWeight.bold),
                 ),
-                SizedBox(height: 5),
-                Text("আপনার মোবাইলে পাঠানো কোড নম্বরটি লিখুন"),
-                SizedBox(height: 30),
-                Pinput(
+                const SizedBox(height: 5),
+                const Text("আপনার মোবাইলে পাঠানো কোড নম্বরটি লিখুন"),
+                const SizedBox(height: 30),
+                const Pinput(
                   length: 4,
                 ),
-                SizedBox(height: 10),
-                Text("কোড পাননি?"),
-                SizedBox(height: 5),
+                const SizedBox(height: 10),
+                const Text("কোড পাননি?"),
+                const SizedBox(height: 5),
                 TextButton(
                     onPressed: () {},
-                    child: Text(
+                    child: const Text(
                       "পুনরায় কোড পাঠান",
                       style: TextStyle(
                           decoration: TextDecoration.underline,
@@ -71,17 +74,12 @@ class _OTP_ScreenState extends State<OTP_Screen> {
                           decorationColor: Colors.blueAccent,
                           decorationThickness: 2.0),
                     )),
-                SizedBox(height: 20),
-                ElevatedButton(
-                  onPressed: () {
-                    // Navigator.push(context,
-                    //     MaterialPageRoute(builder: (context) {
-                    //   return FormField_Screen();
-                    // }));
-                  },
-                  child: Text("প্রবেশ করুন"),
-                  style: buttonStyle,
-                )
+                const SizedBox(height: 20),
+                Utils.customonlyButton(
+                    "প্রবেশ করুন",
+                    Colors.blue,
+                    BorderRadius.circular(10.0),
+                    () => Navigator.pushNamed(context, RoutesName.profile))
               ],
             ),
           ),

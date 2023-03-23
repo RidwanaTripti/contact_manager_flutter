@@ -21,7 +21,9 @@ class _HomeScreenState extends State<HomeScreen> {
         appBar: AppBar(
           leading: InkWell(
             borderRadius: BorderRadius.circular(25.0),
-            onTap: () {},
+            onTap: () {
+              Navigator.pushNamed(context, RoutesName.profile);
+            },
             child: ClipRRect(
               borderRadius: BorderRadius.circular(25.0),
               child: const Image(

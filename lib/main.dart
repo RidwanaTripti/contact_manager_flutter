@@ -1,5 +1,6 @@
 import 'package:contact_manager/utils/routes/routes.dart';
 import 'package:contact_manager/utils/routes/routes_name.dart';
+import 'package:contact_manager/view/search/mymen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -18,7 +19,6 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       initialRoute: RoutesName.splash,
-      // initialRoute: RoutesName.login,
       onGenerateRoute: Routes.generateRoute,
     );
   }

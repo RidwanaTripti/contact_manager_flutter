@@ -11,16 +11,11 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  ButtonStyle buttonStyle = ElevatedButton.styleFrom(
-    shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(10),
-            topRight: Radius.circular(10),
-            bottomLeft: Radius.circular(10),
-            bottomRight: Radius.circular(10))),
-    minimumSize: const Size(500, 50),
-    backgroundColor: Colors.blue,
-  );
+  TextEditingController _numberController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+
+  FocusNode _numberFocusNode = FocusNode();
+  FocusNode _passwordFocusNode = FocusNode();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,7 +57,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: Column(
                     children: [
                       TextFormField(
-                        // keyboardType: TextInputType.number,
+                        controller: _numberController,
+                        keyboardType: TextInputType.number,
+                        focusNode: _numberFocusNode,
                         decoration: InputDecoration(
                           hintText: "আপনার মোবাইল নাম্বার দিন",
                           hintStyle: const TextStyle(color: Colors.black),
@@ -70,10 +67,14 @@ class _LoginScreenState extends State<LoginScreen> {
                             borderRadius: BorderRadius.circular(20),
                           ),
                         ),
+                        onFieldSubmitted: (value) => Utils.fieldFocusChange(
+                            _numberFocusNode, _passwordFocusNode, context),
                       ),
                       const SizedBox(height: 20),
                       Container(
                         child: TextFormField(
+                          controller: _passwordController,
+                          focusNode: _passwordFocusNode,
                           keyboardType: TextInputType.multiline,
                           decoration: InputDecoration(
                             hintText: "আপনার পাসওয়ার্ড দিন",
@@ -84,66 +85,36 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                       ),
-                      const SizedBox(height: 40),
-                      Container(
-                        child: Column(
-                          children: [
-                            ElevatedButton(
-                              onPressed: () {
-                                Navigator.pushNamed(context, RoutesName.home);
-                                // Utils.toastMessage("No Internet Connection");
-                                // Utils.errorMessage(
-                                //     "No Internet Connection", context);
-                                Utils.snackBar(
-                                    "No Internet Connection", context);
-                              },
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    "প্রবেশ করুন ",
-                                    style: TextStyle(fontSize: 15),
-                                  ),
-                                  Icon(
-                                    FontAwesomeIcons.chevronRight,
-                                    size: 12.0,
-                                  )
-                                ],
-                              ),
-                              style: buttonStyle,
+                      const SizedBox(height: 45),
+                      Column(
+                        children: [
+                          Utils.customiconButton(
+                              'প্রবেশ করুন',
+                              FontAwesomeIcons.arrowRight,
+                              Colors.blue,
+                              BorderRadius.circular(10.0),
+                              () => Navigator.pushNamed(
+                                  context, RoutesName.home)),
+                          const SizedBox(height: 15),
+                          TextButton(
+                            onPressed: () {},
+                            child: Text(
+                              "পাসওয়ার্ড ভুলে গেছেন?",
+                              style: TextStyle(
+                                  decoration: TextDecoration.underline,
+                                  decorationStyle: TextDecorationStyle.solid,
+                                  decorationColor: Colors.blueAccent,
+                                  decorationThickness: 2.0),
                             ),
-                            const SizedBox(height: 15),
-                            TextButton(
-                              onPressed: () {},
-                              child: Text(
-                                "পাসওয়ার্ড ভুলে গেছেন?",
-                                style: TextStyle(
-                                    decoration: TextDecoration.underline,
-                                    decorationStyle: TextDecorationStyle.solid,
-                                    decorationColor: Colors.blueAccent,
-                                    decorationThickness: 2.0),
-                              ),
-                            ),
-                            SizedBox(height: 30),
-                            ElevatedButton(
-                              onPressed: () {
-                                Navigator.pushNamed(context, RoutesName.signin);
-                              },
-                              child: Text("নতুন একাউন্ট তৈরী করুন"),
-                              style: ElevatedButton.styleFrom(
-                                minimumSize: const Size(250.0, 50.0),
-                                backgroundColor:
-                                    const Color.fromARGB(255, 29, 110, 175),
-                                shape: const RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(10),
-                                        topRight: Radius.circular(10),
-                                        bottomLeft: Radius.circular(10),
-                                        bottomRight: Radius.circular(10))),
-                              ),
-                            )
-                          ],
-                        ),
+                          ),
+                          SizedBox(height: 30),
+                          Utils.customonlyButton(
+                              "নতুন একাউন্ট তৈরী করুন",
+                              Colors.blue,
+                              BorderRadius.circular(10.0),
+                              () => Navigator.pushNamed(
+                                  context, RoutesName.signin))
+                        ],
                       ),
                     ],
                   ),
@@ -156,20 +127,20 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 }
-   //Scaffold(
-    //   body: SafeArea(
-    //     child: Column(
-    //       children: [
-    //         InkWell(
-    //           onTap: () {
-    //             // Utils.snackBar("No internet connection", context);
-    //             // Utils.errorMessage("No internet connection", context);
-    //             Utils.toastMessage("No internet connection");
-    //             // Navigator.pushNamed(context, RoutesName.home);
-    //           },
-    //           child: const Text("Login"),
-    //         ),
-    //       ],
-    //     ),
-    //   ),
-    // );
+//Scaffold(
+//   body: SafeArea(
+//     child: Column(
+//       children: [
+//         InkWell(
+//           onTap: () {
+//             // Utils.snackBar("No internet connection", context);
+//             // Utils.errorMessage("No internet connection", context);
+//             Utils.toastMessage("No internet connection");
+//             // Navigator.pushNamed(context, RoutesName.home);
+//           },
+//           child: const Text("Login"),
+//         ),
+//       ],
+//     ),
+//   ),
+// );
