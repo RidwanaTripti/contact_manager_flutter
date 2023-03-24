@@ -11,7 +11,15 @@ class FormFieldScreen extends StatefulWidget {
 
 class _FormFieldScreenState extends State<FormFieldScreen> {
   TextStyle textStyle = TextStyle(color: Colors.black);
+  TextEditingController _nameController = TextEditingController();
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+  TextEditingController _surePasswordController = TextEditingController();
 
+  FocusNode _nameFocusNode = FocusNode();
+  FocusNode _emailFocusNode = FocusNode();
+  FocusNode _passwordFocusNode = FocusNode();
+  FocusNode _surePasswordFocusNode = FocusNode();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -39,6 +47,10 @@ class _FormFieldScreenState extends State<FormFieldScreen> {
                             style: textStyle,
                           ),
                           TextFormField(
+                            controller: _nameController,
+                            focusNode: _nameFocusNode,
+                            onFieldSubmitted: (value) => Utils.fieldFocusChange(
+                                _nameFocusNode, _emailFocusNode, context),
                             keyboardType: TextInputType.multiline,
                             decoration: InputDecoration(
                               hintStyle: TextStyle(color: Colors.black),
@@ -52,6 +64,10 @@ class _FormFieldScreenState extends State<FormFieldScreen> {
                           ),
                           TextFormField(
                             keyboardType: TextInputType.multiline,
+                            controller: _emailController,
+                            focusNode: _emailFocusNode,
+                            onFieldSubmitted: (value) => Utils.fieldFocusChange(
+                                _emailFocusNode, _passwordFocusNode, context),
                             decoration: InputDecoration(
                               hintStyle: TextStyle(color: Colors.black),
                               border: OutlineInputBorder(),
@@ -64,6 +80,12 @@ class _FormFieldScreenState extends State<FormFieldScreen> {
                           ),
                           TextFormField(
                             keyboardType: TextInputType.multiline,
+                            controller: _passwordController,
+                            focusNode: _passwordFocusNode,
+                            onFieldSubmitted: (value) => Utils.fieldFocusChange(
+                                _passwordFocusNode,
+                                _surePasswordFocusNode,
+                                context),
                             decoration: InputDecoration(
                               hintStyle: TextStyle(color: Colors.black),
                               border: OutlineInputBorder(),
@@ -76,6 +98,8 @@ class _FormFieldScreenState extends State<FormFieldScreen> {
                           ),
                           TextFormField(
                             keyboardType: TextInputType.multiline,
+                            controller: _surePasswordController,
+                            focusNode: _surePasswordFocusNode,
                             decoration: InputDecoration(
                               hintStyle: TextStyle(color: Colors.black),
                               border: OutlineInputBorder(),
@@ -86,10 +110,7 @@ class _FormFieldScreenState extends State<FormFieldScreen> {
                     ),
                   ),
                   SizedBox(height: 30),
-                  Utils.customonlyButton(
-                      "নিবন্ধন করুন",
-                      Colors.blue,
-                      BorderRadius.circular(10.0),
+                  Utils.customonlyButton("নিবন্ধন করুন", Colors.blue,
                       () => Navigator.pushNamed(context, RoutesName.otp))
                 ],
               ),

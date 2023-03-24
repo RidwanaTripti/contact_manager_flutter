@@ -42,41 +42,43 @@ class Utils {
     );
   }
 
+//custom button with icon
   static customiconButton(
     String buttonText,
     IconData iconData,
     Color color,
-    BorderRadius borderRadius,
     Function()? onTap,
   ) {
-    return Center(
-      child: Material(
-        elevation: 0.0,
-        borderRadius: BorderRadius.circular(12.0),
-        child: InkWell(
-          onTap: onTap,
-          child: Expanded(
-            child: Container(
-              height: 50.0,
-              width: 200.0,
-              color: color,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Text(
-                    buttonText,
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(
-                        fontSize: 15,
-                        color: Colors.white,
-                        fontWeight: FontWeight.w400),
-                  ),
-                  Icon(
-                    iconData,
-                    color: Colors.white,
-                  ),
-                ],
-              ),
+    return Material(
+      elevation: 0.0,
+      borderRadius: BorderRadius.circular(12.0),
+      child: InkWell(
+        onTap: onTap,
+        child: Expanded(
+          child: Container(
+            height: 50.0,
+            width: 200.0,
+            decoration: BoxDecoration(
+                color: color,
+                borderRadius: const BorderRadius.all(Radius.circular(20))),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  buttonText,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                      fontSize: 15,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w400),
+                ),
+                const SizedBox(width: 10),
+                Icon(
+                  iconData,
+                  color: Colors.white,
+                  size: 15.0,
+                ),
+              ],
             ),
           ),
         ),
@@ -84,22 +86,23 @@ class Utils {
     );
   }
 
+//custom button without icon
   static customonlyButton(
     String buttonText,
     Color color,
-    BorderRadius borderRadius,
     Function()? onTap,
   ) {
     return Material(
       elevation: 0.0,
       child: InkWell(
-        borderRadius: borderRadius,
         onTap: onTap,
         child: Expanded(
           child: Container(
             height: 50.0,
             width: 250.0,
-            color: color,
+            decoration: BoxDecoration(
+                color: color,
+                borderRadius: const BorderRadius.all(Radius.circular(20))),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

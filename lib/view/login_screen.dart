@@ -11,6 +11,8 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  ValueNotifier<bool> _passwordVisibility = ValueNotifier(true);
+
   TextEditingController _numberController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
 
@@ -71,12 +73,24 @@ class _LoginScreenState extends State<LoginScreen> {
                             _numberFocusNode, _passwordFocusNode, context),
                       ),
                       const SizedBox(height: 20),
-                      Container(
-                        child: TextFormField(
+                      ValueListenableBuilder(
+                        valueListenable: _passwordVisibility,
+                        builder: (context, value, child) => TextFormField(
                           controller: _passwordController,
                           focusNode: _passwordFocusNode,
+                          obscureText: _passwordVisibility.value,
                           keyboardType: TextInputType.multiline,
                           decoration: InputDecoration(
+                            suffixIcon: InkWell(
+                              child: _passwordVisibility.value
+                                  ? Icon(FontAwesomeIcons.solidEyeSlash,
+                                      size: 15)
+                                  : Icon(FontAwesomeIcons.solidEye, size: 15),
+                              onTap: () {
+                                _passwordVisibility.value =
+                                    !_passwordVisibility.value;
+                              },
+                            ),
                             hintText: "আপনার পাসওয়ার্ড দিন",
                             hintStyle: const TextStyle(color: Colors.black),
                             border: OutlineInputBorder(
@@ -92,7 +106,6 @@ class _LoginScreenState extends State<LoginScreen> {
                               'প্রবেশ করুন',
                               FontAwesomeIcons.arrowRight,
                               Colors.blue,
-                              BorderRadius.circular(10.0),
                               () => Navigator.pushNamed(
                                   context, RoutesName.home)),
                           const SizedBox(height: 15),
@@ -111,7 +124,6 @@ class _LoginScreenState extends State<LoginScreen> {
                           Utils.customonlyButton(
                               "নতুন একাউন্ট তৈরী করুন",
                               Colors.blue,
-                              BorderRadius.circular(10.0),
                               () => Navigator.pushNamed(
                                   context, RoutesName.signin))
                         ],

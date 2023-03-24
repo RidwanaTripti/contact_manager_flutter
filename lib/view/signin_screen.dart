@@ -1,9 +1,7 @@
-import 'package:another_flushbar/flushbar.dart';
 import 'package:contact_manager/utils/routes/routes_name.dart';
 import 'package:contact_manager/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-// import 'package:project_sample_01/screens/otp_screen.dart';
 
 class SigninScreen extends StatefulWidget {
   const SigninScreen({super.key});
@@ -14,6 +12,7 @@ class SigninScreen extends StatefulWidget {
 
 class _SigninScreenState extends State<SigninScreen> {
   @override
+  TextEditingController _numberController = TextEditingController();
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
@@ -51,31 +50,27 @@ class _SigninScreenState extends State<SigninScreen> {
               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Expanded(
-                  child: Container(
-                    child: TextFormField(
-                      // keyboardType: TextInputType.number,
-                      decoration: InputDecoration(
-                        hintText: "আপনার মোবাইল নাম্বার দিন",
-                        hintStyle: TextStyle(color: Colors.black),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
+                  child: TextFormField(
+                    controller: _numberController,
+                    keyboardType: TextInputType.number,
+                    decoration: InputDecoration(
+                      hintText: "আপনার মোবাইল নাম্বার দিন",
+                      hintStyle: TextStyle(color: Colors.black),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20),
                       ),
                     ),
                   ),
                 ),
               ),
-              // SizedBox(height: 30),
               Padding(
                 padding: const EdgeInsets.all(40.0),
                 child: Utils.customiconButton(
                     "চালিয়ে যান ",
                     FontAwesomeIcons.chevronRight,
                     Colors.blue,
-                    BorderRadius.circular(10.0),
                     () => Navigator.pushNamed(context, RoutesName.form)),
               ),
-              // SizedBox(height: 300),
               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Container(

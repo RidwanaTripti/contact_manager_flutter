@@ -75,10 +75,7 @@ class _OTP_ScreenState extends State<OTP_Screen> {
                           decorationThickness: 2.0),
                     )),
                 const SizedBox(height: 20),
-                Utils.customonlyButton(
-                    "প্রবেশ করুন",
-                    Colors.blue,
-                    BorderRadius.circular(10.0),
+                Utils.customonlyButton("প্রবেশ করুন", Colors.blue,
                     () => Navigator.pushNamed(context, RoutesName.profile))
               ],
             ),
